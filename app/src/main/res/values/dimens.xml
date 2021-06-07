@@ -1,3 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="agent_icon_width">162dp</dimen>
+    <dimen name="agent_icon_height">192dp</dimen>
+    <dimen name="weapon_width">171dp</dimen>
+    <dimen name="weapon_height">103dp</dimen>
 </resources>

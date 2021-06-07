@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">The Movie</string>
+    <string name="app_name">Valocheck</string>
     <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -9,4 +9,33 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="agents">Agents</string>
+    <string name="maps">maps</string>
+    <string name="weapons">weapons</string>
+    <string name="jett_profile_name">Jett</string>
+    <string name="weapon_name">classic</string>
+    <string name="agent_role_name">Duelist</string>
+    <string name="agent_biography_name">Biography</string>
+    <string name="agent_biography">Representing her home country of South Korea, Jett's agile and evasive fighting style lets her take risks no one else can. She runs circles around every skirmish, cutting enemies up before they even know what hit them.</string>
+    <string name="ability_name">Ability</string>
+    <string name="spell_ability1">INSTANTLY propely Jett high into the air.</string>
+    <string name="spell_ability1_name">Updraft</string>
+    <string name="spell_ability2">INSTANTLY propely Jett in the direction she is moving. If Jett is standing still, she will propel forward.</string>
+    <string name="spell_ability2_name">Tailwind</string>
+    <string name="spell_ability3_name">Cloudburst</string>
+    <string name="spell_ability3">INSTANTLY throw a projectile that expands into a brief vision-blocking cloud on impact with a surface. HOLD the ability key to curve the smoke in the direction of your crosshair.</string>
+    <string name="spell_ultimate_name">Blade Storm</string>
+    <string name="spell_ultimate">EQUIP a set of highly accurate throwing knives that recharge on killing an opponent. FIRE to throw a single knife at your target. ALTERNATE FIRE to throw all remaining daggers at your target.</string>
+    <string name="spell_passive_name">Drift</string>
+    <string name="spell_passive">Holding the jump button while falling allows you to glide through the air.</string>
+    <string name="weapon_fire_rate">Fire Rate</string>
+    <string name="weapon_magazine_size">Magazine Size</string>
+    <string name="weapon_wall_penetration">Wall Penetration</string>
+    <string name="weapon_fire_mode">Fire Mode</string>
+    <string name="weapon_accuracy">Accuracy Rate</string>
+    <string name="weapon_fire_rate_value">6.75</string>
+    <string name="weapon_magazine_size_value">12</string>
+    <string name="weapon_wall_penetration_value">Low</string>
+    <string name="weapon_fire_mode_value">Semi Auto</string>
+    <string name="weapon_accuracy_rate_value">0.4</string>
 </resources>

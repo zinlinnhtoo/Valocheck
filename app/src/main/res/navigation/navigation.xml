@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/agentsFragment">
 
+    <fragment
+        android:id="@+id/agentsFragment"
+        android:name="com.kz.valocheck.feature.agents.AgentsFragment"
+        android:label="AgentsFragment"
+        tools:layout="@layout/agents_fragment" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.kz.valocheck.feature.maps.MapsFragment"
+        android:label="MapsFragment"
+        tools:layout="@layout/maps_fragment"/>
+    <fragment
+        android:id="@+id/weaponsFragment"
+        android:name="com.kz.valocheck.feature.weapons.WeaponsFragment"
+        android:label="WeaponsFragment"
+        tools:layout="@layout/weapons_fragment"/>
 </navigation>

@@ -1,4 +1,4 @@
-package com.kz.themovie
+package com.kz.valocheck
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

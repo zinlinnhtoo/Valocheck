@@ -1,4 +1,4 @@
-package com.kz.themovie
+package com.kz.valocheck
 
 import org.junit.Test
 

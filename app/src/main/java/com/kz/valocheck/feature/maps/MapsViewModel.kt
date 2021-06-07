@@ -1,7 +1,7 @@
-package com.kz.themovie
+package com.kz.valocheck.feature.maps
 
 import androidx.lifecycle.ViewModel
 
-class MovieListViewModel : ViewModel() {
+class MapsViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }
