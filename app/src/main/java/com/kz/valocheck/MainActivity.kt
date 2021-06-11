@@ -14,7 +14,9 @@ import com.kz.valocheck.databinding.ActivityMainBinding
 import com.kz.valocheck.feature.agents.AgentsViewModel
 import com.kz.valocheck.util.viewBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
 

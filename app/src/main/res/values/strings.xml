@@ -16,7 +16,7 @@
     <string name="weapon_name">classic</string>
     <string name="agent_role_name">Duelist</string>
     <string name="agent_biography_name">Biography</string>
-    <string name="agent_biography">Representing her home country of South Korea, Jett's agile and evasive fighting style lets her take risks no one else can. She runs circles around every skirmish, cutting enemies up before they even know what hit them.</string>
+    <string name="agent_biography">Representing her home country of South Korea, Jett\'s agile and evasive fighting style lets her take risks no one else can. She runs circles around every skirmish, cutting enemies up before they even know what hit them.</string>
     <string name="ability_name">Ability</string>
     <string name="spell_ability1">INSTANTLY propely Jett high into the air.</string>
     <string name="spell_ability1_name">Updraft</string>
@@ -38,4 +38,6 @@
     <string name="weapon_wall_penetration_value">Low</string>
     <string name="weapon_fire_mode_value">Semi Auto</string>
     <string name="weapon_accuracy_rate_value">0.4</string>
+    <string name="map_name">ASCENT</string>
+    <string name="map_coordinate">"45°26'BF'N,12°20'Q'E"</string>
 </resources>

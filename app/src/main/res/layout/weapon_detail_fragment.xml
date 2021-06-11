@@ -1,125 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/weapon_card"
+    <data>
+        <variable
+            name="weaponDomain"
+            type="com.kz.valocheck.domain.WeaponsDomain" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/weapon_cover_image"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/weapon_card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/weapon_classic_display_icon" />
-    </androidx.cardview.widget.CardView>
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/weapon_fire_rate_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weapon_fire_rate"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/weapon_magazine_size_text"
-        app:layout_constraintStart_toStartOf="@+id/weapn_wall_penetration_text"
-        app:layout_constraintTop_toBottomOf="@+id/weapon_card"
-        app:layout_constraintVertical_chainStyle="spread" />
+            <ImageView
+                android:id="@+id/weapon_cover_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:imageResource="@{weaponDomain.weaponImg}"
+                tools:srcCompat="@drawable/weapon_classic_display_icon" />
+        </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/weapon_magazine_size_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weapon_magazine_size"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/weapn_wall_penetration_text"
-        app:layout_constraintStart_toStartOf="@+id/weapn_wall_penetration_text"
-        app:layout_constraintTop_toBottomOf="@+id/weapon_fire_rate_text" />
+        <TextView
+            android:id="@+id/weapon_fire_rate_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weapon_fire_rate"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/weapon_magazine_size_text"
+            app:layout_constraintStart_toStartOf="@+id/weapn_wall_penetration_text"
+            app:layout_constraintTop_toBottomOf="@+id/weapon_card"
+            app:layout_constraintVertical_chainStyle="spread" />
 
-    <TextView
-        android:id="@+id/weapn_wall_penetration_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/weapon_wall_penetration"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/weapon_fire_mode_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weapon_magazine_size_text" />
+        <TextView
+            android:id="@+id/weapon_magazine_size_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weapon_magazine_size"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/weapn_wall_penetration_text"
+            app:layout_constraintStart_toStartOf="@+id/weapn_wall_penetration_text"
+            app:layout_constraintTop_toBottomOf="@+id/weapon_fire_rate_text" />
 
-    <TextView
-        android:id="@+id/weapon_fire_mode_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weapon_fire_mode"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/weapon_accuracy_text"
-        app:layout_constraintStart_toStartOf="@+id/weapn_wall_penetration_text"
-        app:layout_constraintTop_toBottomOf="@+id/weapn_wall_penetration_text" />
+        <TextView
+            android:id="@+id/weapn_wall_penetration_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/weapon_wall_penetration"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/weapon_fire_mode_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weapon_magazine_size_text" />
 
-    <TextView
-        android:id="@+id/weapon_accuracy_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weapon_accuracy"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/weapn_wall_penetration_text"
-        app:layout_constraintTop_toBottomOf="@+id/weapon_fire_mode_text" />
+        <TextView
+            android:id="@+id/weapon_fire_mode_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weapon_fire_mode"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/weapn_wall_penetration_text"
+            app:layout_constraintTop_toBottomOf="@+id/weapn_wall_penetration_text" />
 
-    <TextView
-        android:id="@+id/weapon_fire_rate_value_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weapon_fire_rate_value"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/weapon_fire_rate_text"
-        app:layout_constraintEnd_toEndOf="@+id/weapon_magazine_size_value_text"
-        app:layout_constraintStart_toStartOf="@+id/weapon_magazine_size_value_text"
-        app:layout_constraintVertical_chainStyle="spread" />
+        <TextView
+            android:id="@+id/weapon_fire_rate_value_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{weaponDomain.weaponStats.fireRate}"
+            tools:text="@string/weapon_fire_rate_value"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/weapon_fire_rate_text"
+            app:layout_constraintEnd_toEndOf="@+id/weapon_magazine_size_value_text"
+            app:layout_constraintStart_toStartOf="@+id/weapon_magazine_size_value_text"
+            app:layout_constraintVertical_chainStyle="spread" />
 
-    <TextView
-        android:id="@+id/weapon_magazine_size_value_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weapon_magazine_size_value"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/weapon_magazine_size_text"
-        app:layout_constraintEnd_toEndOf="@+id/weapn_wall_penetration_value_text"
-        app:layout_constraintStart_toStartOf="@+id/weapn_wall_penetration_value_text" />
+        <TextView
+            android:id="@+id/weapon_magazine_size_value_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{weaponDomain.weaponStats.magazineSize}"
+            tools:text="@string/weapon_magazine_size_value"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/weapon_magazine_size_text"
+            app:layout_constraintEnd_toEndOf="@+id/weapn_wall_penetration_value_text"
+            app:layout_constraintStart_toStartOf="@+id/weapn_wall_penetration_value_text" />
 
-    <TextView
-        android:id="@+id/weapn_wall_penetration_value_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:text="@string/weapon_wall_penetration_value"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/weapn_wall_penetration_text"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/weapn_wall_penetration_value_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text="@{weaponDomain.weaponStats.wallPenetration}"
+            tools:text="@string/weapon_wall_penetration_value"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/weapn_wall_penetration_text"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/weapon_fire_mode_value_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weapon_fire_mode_value"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/weapon_fire_mode_text"
-        app:layout_constraintEnd_toEndOf="@+id/weapn_wall_penetration_value_text"
-        app:layout_constraintStart_toStartOf="@+id/weapn_wall_penetration_value_text" />
+        <TextView
+            android:id="@+id/weapon_fire_mode_value_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{weaponDomain.weaponStats.fireMode}"
+            tools:text="@string/weapon_fire_mode_value"
+            android:textSize="20sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/weapon_fire_mode_text"
+            app:layout_constraintEnd_toEndOf="@+id/weapn_wall_penetration_value_text"
+            app:layout_constraintStart_toStartOf="@+id/weapn_wall_penetration_value_text" />
 
-    <TextView
-        android:id="@+id/weapon_accuracy_rate_value_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weapon_accuracy_rate_value"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/weapon_accuracy_text"
-        app:layout_constraintEnd_toEndOf="@+id/weapn_wall_penetration_value_text"
-        app:layout_constraintStart_toStartOf="@+id/weapon_fire_mode_value_text" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -5,11 +5,19 @@
 
     <data>
 
+        <variable
+            name="agent"
+            type="com.kz.valocheck.domain.AgentsDomain" />
+
+        <variable
+            name="clickListner"
+            type="com.kz.valocheck.feature.agents.AgentsOnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{ () -> clickListner.onClick(agent)}">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"

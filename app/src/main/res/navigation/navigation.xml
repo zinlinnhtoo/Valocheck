@@ -9,15 +9,54 @@
         android:id="@+id/agentsFragment"
         android:name="com.kz.valocheck.feature.agents.AgentsFragment"
         android:label="AgentsFragment"
-        tools:layout="@layout/agents_fragment" />
+        tools:layout="@layout/agents_fragment" >
+        <action
+            android:id="@+id/action_agentsFragment_to_agentsDetailFragment"
+            app:destination="@id/agentsDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.kz.valocheck.feature.maps.MapsFragment"
         android:label="MapsFragment"
-        tools:layout="@layout/maps_fragment"/>
+        tools:layout="@layout/maps_fragment">
+        <action
+            android:id="@+id/action_mapsFragment_to_mapDetailFragment"
+            app:destination="@id/mapDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/weaponsFragment"
         android:name="com.kz.valocheck.feature.weapons.WeaponsFragment"
         android:label="WeaponsFragment"
-        tools:layout="@layout/weapons_fragment"/>
+        tools:layout="@layout/weapons_fragment">
+        <action
+            android:id="@+id/action_weaponsFragment_to_WeaponsDetailFragment"
+            app:destination="@id/WeaponsDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agentsDetailFragment"
+        android:name="com.kz.valocheck.feature.agents.AgentsDetailFragment"
+        android:label="AgentsDetailFragment"
+        tools:layout="@layout/agent_detail_fragment">
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapDetailFragment"
+        android:name="com.kz.valocheck.feature.maps.MapsDetailFragment"
+        android:label="MapsDetailFragment"
+        tools:layout="@layout/map_detail_fragment">
+        <argument
+            android:name="mapId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/WeaponsDetailFragment"
+        android:name="com.kz.valocheck.feature.weapons.WeaponsDetailFragment"
+        android:label="WeaponsDetailFragment"
+        tools:layout="@layout/weapon_detail_fragment">
+        <argument
+            android:name="weaponId"
+            app:argType="string" />
+    </fragment>
 </navigation>
