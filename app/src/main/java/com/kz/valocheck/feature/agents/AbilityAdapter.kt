@@ -25,9 +25,7 @@ class AbilityAdapter : ListAdapter<AbilityDomain, AbilityViewHolder>(AbilityDiff
 class AbilityViewHolder(val binding: AbilityListBinding): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(abilityDomain: AbilityDomain) {
-        binding.spellImage.setImageResource(abilityDomain.icon)
-        binding.spellName.text = abilityDomain.name
-        binding.spellText.text = abilityDomain.description
+        binding.ability = abilityDomain
     }
 
 }

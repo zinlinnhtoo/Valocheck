@@ -25,10 +25,7 @@ class MapAdapter(val clickListener: MapsOnClickListener) : ListAdapter<MapsDomai
 
 class MapsViewHolder(val binding: MapsListBinding): RecyclerView.ViewHolder(binding.root) {
     fun bind(mapsDomain: MapsDomain, clickListener: MapsOnClickListener){
-        binding.mapImage.setImageResource(mapsDomain.mapImg)
-        binding.mapNameText.text = mapsDomain.name
-        binding.mapCoordinateText.text = mapsDomain.coordinate
-        binding.map = mapsDomain
+        binding.mapDomain = mapsDomain
         binding.clickListener = clickListener
     }
 }

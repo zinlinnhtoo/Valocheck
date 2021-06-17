@@ -3,21 +3,33 @@ package com.kz.valocheck.feature.agents
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.kz.valocheck.domain.AgentsDomain
 import com.kz.valocheck.repo.AgentsRepo
+import com.kz.valocheck.util.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
 class AgentsViewModel @Inject constructor(private val agentsRepo: AgentsRepo) : ViewModel() {
 
-    private  val _agentList = MutableLiveData<List<AgentsDomain>>()
-
-    val agentList : LiveData<List<AgentsDomain>>
+    private  val _agentList = MutableLiveData<ViewState<List<AgentsDomain>>>()
+    val agentList : LiveData<ViewState<List<AgentsDomain>>>
     get() = _agentList
 
     fun getAgentsList() {
-        _agentList.value = agentsRepo.getAgentsList()
+
+        viewModelScope.launch {
+            try {
+                _agentList.value = ViewState.Loading
+                _agentList.value = ViewState.Success(agentsRepo.getAgentsList().filterNot { it.developerName.contains("NPE") })
+            } catch (e: Exception) {
+                _agentList.value = ViewState.Error(e)
+            }
+        }
+
     }
 
     init {

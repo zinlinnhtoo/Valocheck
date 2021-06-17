@@ -4,6 +4,7 @@ data class MapsDomain(
     val id : String,
     val name: String,
     val coordinate: String,
-    val mapImg: Int,
-    val miniMapImg: Int
+    val mapImg: String,
+    val miniMapImg: String,
+    val splash: String
 )

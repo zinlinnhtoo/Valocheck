@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.kz.valocheck.R
 import com.kz.valocheck.databinding.MapsFragmentBinding
+import com.kz.valocheck.util.ViewState
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,7 +41,21 @@ class MapsFragment : Fragment(R.layout.maps_fragment) {
         })
 
         mapsViewModel.mapsList.observe(viewLifecycleOwner, {
-            adapter.submitList(it)
+            when(it){
+                is ViewState.Loading -> {
+                    binding.mapList.isVisible = false
+                    binding.loading.isVisible = true
+                }
+                is  ViewState.Success -> {
+                    binding.loading.isVisible = false
+                    binding.mapList.isVisible = true
+                    adapter.submitList(it.data)
+                }
+                is ViewState.Error -> {
+                    binding.loading.isVisible = false
+                    Toast.makeText(requireContext(), it.error.message, Toast.LENGTH_LONG).show()
+                }
+            }
         })
     }
 }

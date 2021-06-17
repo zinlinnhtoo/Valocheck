@@ -35,8 +35,6 @@ class WeaponsOnClickListener(val clickListener: (weaponId: String) -> Unit) {
 class WeaponsViewHolder(val binding: WeaponsListBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(weaponsDomain: WeaponsDomain, clickListener: WeaponsOnClickListener) {
-        binding.weaponImage.setImageResource(weaponsDomain.weaponImg)
-        binding.weaponName.text = weaponsDomain.name
         binding.weapons = weaponsDomain
         binding.clickListener = clickListener
     }

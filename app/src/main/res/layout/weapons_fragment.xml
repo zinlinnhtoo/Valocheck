@@ -7,10 +7,22 @@
     </data>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/weapon_list"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:itemCount="7"
-        tools:listitem="@layout/weapons_list" />
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"></ProgressBar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/weapon_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:itemCount="7"
+            tools:listitem="@layout/weapons_list" />
+
+    </FrameLayout>
 </layout>

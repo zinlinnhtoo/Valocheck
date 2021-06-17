@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="map"
+            name="mapDomain"
             type="com.kz.valocheck.domain.MapsDomain" />
 
         <variable
@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:onClick="@{() -> clickListener.onClick(map)}">
+        android:onClick="@{() -> clickListener.onClick(mapDomain)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -37,6 +37,7 @@
                 android:layout_height="0dp"
                 android:alpha="0.6"
                 android:scaleType="centerCrop"
+                app:imageUrl="@{ mapDomain.mapImg }"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -63,6 +64,7 @@
                 android:textColor="#FFFEFE"
                 android:textSize="48sp"
                 android:textStyle="bold"
+                android:text="@{ mapDomain.name }"
                 app:layout_constraintBottom_toTopOf="@+id/map_coordinate_text"
                 app:layout_constraintEnd_toEndOf="@+id/map_image"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -83,6 +85,7 @@
                 android:shadowRadius="1"
                 android:textColor="#FFFEFE"
                 android:textSize="12sp"
+                android:text="@{ mapDomain.coordinate }"
                 app:layout_constraintBottom_toTopOf="@+id/map_image"
                 app:layout_constraintEnd_toEndOf="@+id/map_image"
                 app:layout_constraintHorizontal_bias="0.5"

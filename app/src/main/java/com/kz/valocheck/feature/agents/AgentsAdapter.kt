@@ -26,7 +26,6 @@ class AgentsAdapter(val clickListener: AgentsOnClickListener) : ListAdapter<Agen
 class AgentsViewHolder(val binding: AgentsListBinding): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(agentsDomain: AgentsDomain, clickListener: AgentsOnClickListener) {
-        binding.agentProfileImage.setImageResource(agentsDomain.profile)
         binding.agentProfileName.text = agentsDomain.name
         binding.agent = agentsDomain
         binding.clickListner = clickListener

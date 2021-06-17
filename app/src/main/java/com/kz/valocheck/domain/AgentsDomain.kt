@@ -3,8 +3,8 @@ package com.kz.valocheck.domain
 data class AgentsDomain(
     val id: String,
     val name: String,
-    val profile: Int,
-    val portrait: Int,
+    val profile: String,
+    val portrait: String,
     val description: String,
     val developerName: String,
     val abilities: List<AbilityDomain>,
@@ -15,7 +15,7 @@ data class RoleDomain(
     val id: String,
     val name: String,
     val description: String,
-    val icon: Int
+    val icon: String
 )
 
 
@@ -24,5 +24,5 @@ data class AbilityDomain(
     val slot: String,
     val name: String,
     val description: String,
-    val icon: Int
+    val icon: String
 )

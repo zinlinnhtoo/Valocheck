@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <data>
         <variable
@@ -17,7 +18,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/weapon_card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -26,7 +27,7 @@
                 android:id="@+id/weapon_cover_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:imageResource="@{weaponDomain.weaponImg}"
+                app:imageUrl="@{weaponDomain.weaponImg}"
                 tools:srcCompat="@drawable/weapon_classic_display_icon" />
         </androidx.cardview.widget.CardView>
 

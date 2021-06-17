@@ -23,7 +23,6 @@ class MapsDetailFragment: Fragment(R.layout.map_detail_fragment) {
         mapsDetailViewModel.getMapsDetail(args.mapId)
         mapsDetailViewModel.mapDetail.observe(viewLifecycleOwner, {
             binding.mapDomain = it
-            binding.miniMapImage.setImageResource(it.miniMapImg)
         })
     }
 }
