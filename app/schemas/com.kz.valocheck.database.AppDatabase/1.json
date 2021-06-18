@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "97a3a3365e5a0dea5bf43bdbe5b15529",
+    "identityHash": "0830aa65e73f47b9ff6a14ce25d53f10",
     "entities": [
       {
         "tableName": "agents",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`agent_id` TEXT NOT NULL, `name` TEXT NOT NULL, `profile` TEXT NOT NULL, `portrait` TEXT NOT NULL, `description` TEXT NOT NULL, `developer_name` TEXT NOT NULL, PRIMARY KEY(`agent_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`agent_id` TEXT NOT NULL, `name` TEXT NOT NULL, `profile` TEXT NOT NULL, `portrait` TEXT NOT NULL, `description` TEXT NOT NULL, `developer_name` TEXT NOT NULL, `agent_role_id` TEXT NOT NULL, PRIMARY KEY(`agent_id`))",
         "fields": [
           {
             "fieldPath": "agentId",
@@ -43,6 +43,12 @@
             "columnName": "developer_name",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "agentRoleId",
+            "columnName": "agent_role_id",
+            "affinity": "TEXT",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -56,23 +62,11 @@
       },
       {
         "tableName": "roles",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `role_id` TEXT NOT NULL, `agent_id` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `icon` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`role_id` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `icon` TEXT NOT NULL, PRIMARY KEY(`role_id`))",
         "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "TEXT",
-            "notNull": true
-          },
           {
             "fieldPath": "roleId",
             "columnName": "role_id",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "agentId",
-            "columnName": "agent_id",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -97,7 +91,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "role_id"
           ],
           "autoGenerate": false
         },
@@ -108,7 +102,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '97a3a3365e5a0dea5bf43bdbe5b15529')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0830aa65e73f47b9ff6a14ce25d53f10')"
     ]
   }
 }

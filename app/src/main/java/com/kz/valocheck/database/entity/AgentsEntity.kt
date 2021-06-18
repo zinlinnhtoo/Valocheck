@@ -11,13 +11,12 @@ data class AgentEntity(
     val portrait: String,
     val description: String,
     @ColumnInfo(name = "developer_name") val developerName: String,
+    @ColumnInfo(name = "agent_role_id") val agentRoleId: String
 )
 
 @Entity(tableName = "roles")
 data class RoleEntity(
-    @PrimaryKey val id: String,
-    @ColumnInfo(name = "role_id") val roleId: String,
-    @ColumnInfo(name = "agent_id") val agentId: String,
+    @PrimaryKey @ColumnInfo(name = "role_id") val roleId: String,
     val name: String,
     val description: String,
     val icon: String
@@ -26,8 +25,6 @@ data class RoleEntity(
 data class AgentAndRole(
     @Embedded val agent: AgentEntity,
 
-    @Relation( parentColumn = "agent_id", entityColumn = "agent_id")
+    @Relation( parentColumn = "agent_role_id", entityColumn = "role_id")
     val role: RoleEntity
-
 )
-

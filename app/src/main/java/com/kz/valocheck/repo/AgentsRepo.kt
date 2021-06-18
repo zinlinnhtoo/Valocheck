@@ -31,7 +31,8 @@ class AgentsRepo @Inject constructor(
                     profile = it.profile.orEmpty(),
                     portrait = it.portrait.orEmpty(),
                     description = it.description.orEmpty(),
-                    developerName = it.developerName.orEmpty()
+                    developerName = it.developerName.orEmpty(),
+                    agentRoleId = it.role?.id.orEmpty()
                 )
             }.orEmpty()
 
@@ -39,9 +40,7 @@ class AgentsRepo @Inject constructor(
             val roleEntities: List<RoleEntity?>? = result?.map { agent: AgentDto ->
                 agent.role?.let { role: RoleDto ->
                     RoleEntity(
-                        id = role.id + agent.id,
                         roleId = role.id.orEmpty(),
-                        agentId = agent.id.orEmpty(),
                         name = role.name.orEmpty(),
                         description = role.description.orEmpty(),
                         icon = role.icon.orEmpty()
@@ -72,7 +71,7 @@ class AgentsRepo @Inject constructor(
                 abilities = emptyList(),
                 role = it.role.let { roleEntity ->
                     RoleDomain(
-                        id = roleEntity.agentId,
+                        id = roleEntity.roleId,
                         name = roleEntity.name,
                         description = roleEntity.description,
                         icon = roleEntity.icon

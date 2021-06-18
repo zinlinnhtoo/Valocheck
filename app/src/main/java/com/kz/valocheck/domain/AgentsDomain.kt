@@ -1,4 +1,4 @@
-        package com.kz.valocheck.domain
+package com.kz.valocheck.domain
 
 data class AgentsDomain(
     val id: String,
