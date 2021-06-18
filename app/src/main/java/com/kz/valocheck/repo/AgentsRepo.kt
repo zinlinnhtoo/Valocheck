@@ -1,12 +1,18 @@
 package com.kz.valocheck.repo
 
+import com.kz.valocheck.database.dao.AbilityDao
 import com.kz.valocheck.database.dao.AgentDao
 import com.kz.valocheck.database.dao.RoleDao
+import com.kz.valocheck.database.entity.AbilityEntity
 import com.kz.valocheck.database.entity.AgentEntity
+import com.kz.valocheck.database.entity.AgentInfo
 import com.kz.valocheck.database.entity.RoleEntity
+import com.kz.valocheck.domain.AbilityDomain
 import com.kz.valocheck.domain.AgentsDomain
 import com.kz.valocheck.domain.RoleDomain
 import com.kz.valocheck.mapper.asDomain
+import com.kz.valocheck.mapper.asEntity
+import com.kz.valocheck.network.AbilityDto
 import com.kz.valocheck.network.AgentDto
 import com.kz.valocheck.network.RoleDto
 import com.kz.valocheck.network.ValorantApiService
@@ -15,7 +21,8 @@ import javax.inject.Inject
 class AgentsRepo @Inject constructor(
     private val valorantApiService: ValorantApiService,
     private val agentDao: AgentDao,
-    private val roleDao: RoleDao
+    private val roleDao: RoleDao,
+    private val abilityDao: AbilityDao
 ) {
 
     //get agents
@@ -49,10 +56,21 @@ class AgentsRepo @Inject constructor(
 
             }
 
-            agentDao.insertAgent(*agentEntities.toTypedArray())
+            val abilityEntities: List<AbilityEntity?>? = result?.flatMap { agent ->
+                agent.abilities?.map {
+                    it.asEntity(agent.id.orEmpty())
+                }.orEmpty()
+            }
+
+
+            agentDao.insert(*agentEntities.toTypedArray())
 
             roleEntities?.let {
-                roleDao.insertRole(*it.filterNotNull().toTypedArray())
+                roleDao.insert(*it.filterNotNull().toTypedArray())
+            }
+
+            abilityEntities?.let {
+                abilityDao.insert(*it.filterNotNull().toTypedArray())
             }
 
 
@@ -60,30 +78,39 @@ class AgentsRepo @Inject constructor(
 
         }
 
-        return agentDao.getAgentsList().map {
-            AgentsDomain(
-                id = it.agent.agentId,
-                name = it.agent.name,
-                profile = it.agent.profile,
-                portrait = it.agent.portrait,
-                description = it.agent.description,
-                developerName = it.agent.developerName,
-                abilities = emptyList(),
-                role = it.role.let { roleEntity ->
-                    RoleDomain(
-                        id = roleEntity.roleId,
-                        name = roleEntity.name,
-                        description = roleEntity.description,
-                        icon = roleEntity.icon
-                    )
-                }
-            )
-        }
+        return agentDao.getList().map { it.asDomain() }
     }
 
     //get agent detail
     suspend fun getAgentDetails(id: String): AgentsDomain {
-        return valorantApiService.getAgentDetail(id).body()?.data.asDomain()
+        return  agentDao.get(id).asDomain()
+    }
+
+    private fun AgentInfo.asDomain(): AgentsDomain {
+        return AgentsDomain(
+            id = agent.agentId,
+            name = agent.name,
+            profile = agent.profile,
+            portrait = agent.portrait,
+            description = agent.description,
+            developerName = agent.developerName,
+            abilities = ability.map { ability: AbilityEntity ->
+                AbilityDomain(
+                    slot = ability.slot,
+                    name = ability.name,
+                    description = ability.description,
+                    icon = ability.icon
+                )
+            },
+            role = role.let { roleEntity ->
+                RoleDomain(
+                    id = roleEntity.roleId,
+                    name = roleEntity.name,
+                    description = roleEntity.description,
+                    icon = roleEntity.icon
+                )
+            }
+        )
     }
 
 

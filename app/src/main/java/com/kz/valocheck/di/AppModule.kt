@@ -3,6 +3,7 @@ package com.kz.valocheck.di
 import android.content.Context
 import com.kz.valocheck.database.dao.AgentDao
 import com.kz.valocheck.database.AppDatabase
+import com.kz.valocheck.database.dao.AbilityDao
 import com.kz.valocheck.database.dao.RoleDao
 import com.kz.valocheck.network.BASE_URL
 import com.kz.valocheck.network.ValorantApiService
@@ -56,4 +57,8 @@ class AppModule {
         return appDatabase.roleDao()
     }
 
+    @Provides
+    fun provideAbilityDao(appDatabase: AppDatabase) : AbilityDao {
+        return appDatabase.abilityDao()
+    }
 }

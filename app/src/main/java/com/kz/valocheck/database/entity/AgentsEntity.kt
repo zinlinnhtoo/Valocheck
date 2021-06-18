@@ -11,7 +11,7 @@ data class AgentEntity(
     val portrait: String,
     val description: String,
     @ColumnInfo(name = "developer_name") val developerName: String,
-    @ColumnInfo(name = "agent_role_id") val agentRoleId: String
+    @ColumnInfo(name = "agent_role_id") val agentRoleId: String,
 )
 
 @Entity(tableName = "roles")
@@ -22,9 +22,23 @@ data class RoleEntity(
     val icon: String
 )
 
-data class AgentAndRole(
-    @Embedded val agent: AgentEntity,
-
-    @Relation( parentColumn = "agent_role_id", entityColumn = "role_id")
-    val role: RoleEntity
+@Entity(tableName = "abilities")
+data class AbilityEntity(
+    @PrimaryKey val id: String,
+    @ColumnInfo(name = "ability_agent_id") val abilityAgentId: String,
+    val slot: String,
+    val name: String,
+    val description: String,
+    val icon: String
 )
+
+data class AgentInfo(
+    @Embedded val agent: AgentEntity,
+    @Relation( parentColumn = "agent_role_id", entityColumn = "role_id" )
+    val role: RoleEntity,
+    @Relation( parentColumn = "agent_id", entityColumn = "ability_agent_id" )
+    val ability: List<AbilityEntity>
+)
+
+
+

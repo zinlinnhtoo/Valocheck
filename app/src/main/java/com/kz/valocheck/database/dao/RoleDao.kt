@@ -9,6 +9,6 @@ import com.kz.valocheck.database.entity.RoleEntity
 interface RoleDao{
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertRole(vararg role: RoleEntity)
+    fun insert(vararg role: RoleEntity)
 
 }
