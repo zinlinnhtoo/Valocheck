@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "76dbed7b59a43df6e55ace80859758b0",
+    "identityHash": "6cf7fc5a0d5bfe5798b5fb92bfcce90a",
     "entities": [
       {
         "tableName": "agents",
@@ -147,12 +147,216 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "maps",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `coordinate` TEXT NOT NULL, `map_img` TEXT NOT NULL, `mini_map_img` TEXT NOT NULL, `splash` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "coordinate",
+            "columnName": "coordinate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mapImg",
+            "columnName": "map_img",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "miniMapImg",
+            "columnName": "mini_map_img",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "splash",
+            "columnName": "splash",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "weapons",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `category` TEXT NOT NULL, `weapon_img` TEXT NOT NULL, `fire_rate` TEXT NOT NULL, `magazine_size` TEXT NOT NULL, `run_speed_multiplier` TEXT NOT NULL, `equip_time_second` TEXT NOT NULL, `reload_time_second` TEXT NOT NULL, `wall_penetration` TEXT NOT NULL, `fire_mode` TEXT NOT NULL, `cost` TEXT NOT NULL, `shop_data_category` TEXT NOT NULL, `category_text` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weaponImg",
+            "columnName": "weapon_img",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weaponStats.fireRate",
+            "columnName": "fire_rate",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weaponStats.magazineSize",
+            "columnName": "magazine_size",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weaponStats.runSpeedMultiplier",
+            "columnName": "run_speed_multiplier",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weaponStats.equipTimeSecond",
+            "columnName": "equip_time_second",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weaponStats.reloadTimeSecond",
+            "columnName": "reload_time_second",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weaponStats.wallPenetration",
+            "columnName": "wall_penetration",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weaponStats.fireMode",
+            "columnName": "fire_mode",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shopData.cost",
+            "columnName": "cost",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shopData.category",
+            "columnName": "shop_data_category",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shopData.categoryText",
+            "columnName": "category_text",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "damage_range",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `weapon_id` TEXT NOT NULL, `start_range` TEXT NOT NULL, `end_range` TEXT NOT NULL, `head_dmg` TEXT NOT NULL, `body_dmg` TEXT NOT NULL, `leg_dmg` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weaponId",
+            "columnName": "weapon_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startRange",
+            "columnName": "start_range",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endRange",
+            "columnName": "end_range",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "headDmg",
+            "columnName": "head_dmg",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bodyDmg",
+            "columnName": "body_dmg",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "legDmg",
+            "columnName": "leg_dmg",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '76dbed7b59a43df6e55ace80859758b0')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6cf7fc5a0d5bfe5798b5fb92bfcce90a')"
     ]
   }
 }

@@ -1,6 +1,5 @@
 package com.kz.valocheck.network
 
-import com.kz.valocheck.domain.*
 import com.squareup.moshi.Json
 
 data class WeaponResponse(
@@ -20,7 +19,6 @@ data class WeaponDto(
     @Json(name = "displayIcon") val weaponImg: String?,
     @Json(name = "weaponStats") val weaponStats: WeaponStatsDto?,
     val shopData: ShopDataDto?,
-    @Json(name = "damageRanges") val dmgRange: List<DamageRangeDto>?
 )
 
 data class WeaponStatsDto(
@@ -30,7 +28,8 @@ data class WeaponStatsDto(
     val equipTimeSecond: String?,
     val reloadTimeSecond: String?,
     val wallPenetration: String?,
-    val fireMode: String?
+    val fireMode: String?,
+    @Json(name = "damageRanges") val dmgRange: List<DamageRangeDto>?
 )
 
 data class ShopDataDto(
@@ -48,71 +47,71 @@ data class DamageRangeDto(
 )
 
 
-fun WeaponResponse?.asDomain(): List<WeaponsDomain> {
-    return this?.data?.map {
-        WeaponsDomain(
-            id = it.id.orEmpty(),
-            name = it.name.orEmpty(),
-            category = it.category.orEmpty(),
-            weaponImg = it.weaponImg.orEmpty(),
-            weaponStats = it.weaponStats.asDomain(),
-            shopData = it.shopData.asDomain(),
-            dmgRange = it.dmgRange?.map {
-                it.asDomain()
-            }.orEmpty()
-        )
-    }.orEmpty()
-}
-
-fun WeaponDto?.asDomain(): WeaponsDomain {
-    return WeaponsDomain(
-        id = this?.id.orEmpty(),
-        name = this?.name.orEmpty(),
-        category = this?.category.orEmpty(),
-        weaponImg = this?.weaponImg.orEmpty(),
-        weaponStats = this?.weaponStats.asDomain(),
-        shopData = this?.shopData.asDomain(),
-        dmgRange = this?.dmgRange?.map {
-            it.asDomain()
-        }.orEmpty()
-    )
-}
-
-
-fun WeaponStatsDto?.asDomain() : WeaponStatsDomain {
-    return this?.run {
-        WeaponStatsDomain(
-            fireRate = fireRate.orEmpty(),
-            magazineSize = magazineSize.orEmpty(),
-            runSpeedMultiplier = runSpeedMultiplier.orEmpty(),
-            equipTimeSecond = equipTimeSecond.orEmpty(),
-            reloadTimeSecond = reloadTimeSecond.orEmpty(),
-            wallPenetration = wallPenetration.orEmpty(),
-            fireMode = fireMode.orEmpty()
-        )
-    } ?: WeaponStatsDomain("","","","","","","")
-}
-
-
-fun ShopDataDto?.asDomain() : ShopDataDomain {
-    return this?.run {
-        ShopDataDomain(
-            cost = cost.orEmpty(),
-            category = category.orEmpty(),
-            categoryText = categoryText.orEmpty()
-        )
-    } ?: ShopDataDomain("","","")
-}
-
-fun DamageRangeDto.asDomain() : DamageRangeDomain {
-    return DamageRangeDomain(
-        startRange = startRange.orEmpty(),
-        endRange = endRange.orEmpty(),
-        headDmg = headDmg.orEmpty(),
-        bodyDmg = bodyDmg.orEmpty(),
-        legDmg = legDmg.orEmpty()
-    )
-}
+//fun WeaponResponse?.asDomain(): List<WeaponsDomain> {
+//    return this?.data?.map {
+//        WeaponsDomain(
+//            id = it.id.orEmpty(),
+//            name = it.name.orEmpty(),
+//            category = it.category.orEmpty(),
+//            weaponImg = it.weaponImg.orEmpty(),
+//            weaponStats = it.weaponStats.asDomain(),
+//            shopData = it.shopData.asDomain(),
+//            dmgRange = it.dmgRange?.map { dmgRangeDto ->
+//                dmgRangeDto.asDomain()
+//            }.orEmpty()
+//        )
+//    }.orEmpty()
+//}
+//
+//fun WeaponDto?.asDomain(): WeaponsDomain {
+//    return WeaponsDomain(
+//        id = this?.id.orEmpty(),
+//        name = this?.name.orEmpty(),
+//        category = this?.category.orEmpty(),
+//        weaponImg = this?.weaponImg.orEmpty(),
+//        weaponStats = this?.weaponStats.asDomain(),
+//        shopData = this?.shopData.asDomain(),
+//        dmgRange = this?.dmgRange?.map {
+//            it.asDomain()
+//        }.orEmpty()
+//    )
+//}
+//
+//
+//fun WeaponStatsDto?.asDomain() : WeaponStatsDomain {
+//    return this?.run {
+//        WeaponStatsDomain(
+//            fireRate = fireRate.orEmpty(),
+//            magazineSize = magazineSize.orEmpty(),
+//            runSpeedMultiplier = runSpeedMultiplier.orEmpty(),
+//            equipTimeSecond = equipTimeSecond.orEmpty(),
+//            reloadTimeSecond = reloadTimeSecond.orEmpty(),
+//            wallPenetration = wallPenetration.orEmpty(),
+//            fireMode = fireMode.orEmpty()
+//        )
+//    } ?: WeaponStatsDomain("","","","","","","")
+//}
+//
+//
+//fun ShopDataDto?.asDomain() : ShopDataDomain {
+//    return this?.run {
+//        ShopDataDomain(
+//            cost = cost.orEmpty(),
+//            category = category.orEmpty(),
+//            categoryText = categoryText.orEmpty()
+//        )
+//    } ?: ShopDataDomain("","","")
+//}
+//
+//fun DamageRangeDto?.asDomain() : DamageRangeDomain {
+//    return DamageRangeDomain(
+//        startRange = this?.startRange.orEmpty(),
+//        endRange = this?.endRange.orEmpty(),
+//        headDmg = this?.headDmg.orEmpty(),
+//        bodyDmg = this?.bodyDmg.orEmpty(),
+//        legDmg = this?.legDmg.orEmpty()
+//    )
+//}
 
 
 

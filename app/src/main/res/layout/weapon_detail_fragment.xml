@@ -29,6 +29,7 @@
                 android:layout_height="match_parent"
                 app:imageUrl="@{weaponDomain.weaponImg}"
                 tools:srcCompat="@drawable/weapon_classic_display_icon" />
+
         </androidx.cardview.widget.CardView>
 
         <TextView

@@ -1,10 +1,8 @@
 package com.kz.valocheck.di
 
 import android.content.Context
-import com.kz.valocheck.database.dao.AgentDao
 import com.kz.valocheck.database.AppDatabase
-import com.kz.valocheck.database.dao.AbilityDao
-import com.kz.valocheck.database.dao.RoleDao
+import com.kz.valocheck.database.dao.*
 import com.kz.valocheck.network.BASE_URL
 import com.kz.valocheck.network.ValorantApiService
 import com.squareup.moshi.Moshi
@@ -61,4 +59,20 @@ class AppModule {
     fun provideAbilityDao(appDatabase: AppDatabase) : AbilityDao {
         return appDatabase.abilityDao()
     }
+
+    @Provides
+    fun provideMapDao(appDatabase: AppDatabase) : MapDao {
+        return appDatabase.mapDao()
+    }
+
+    @Provides
+    fun provideWeaponDao(appDatabase: AppDatabase) : WeaponDao {
+        return appDatabase.weaponDao()
+    }
+
+    @Provides
+    fun provideDamageRangeDao(appDatabase: AppDatabase) : DamageRangeDao {
+        return appDatabase.dmgRangeDao()
+    }
+
 }

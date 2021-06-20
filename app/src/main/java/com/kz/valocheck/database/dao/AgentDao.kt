@@ -16,8 +16,8 @@ interface AgentDao {
     suspend fun get(id: String): AgentInfo
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg agents: AgentEntity)
+    fun insert(vararg agent: AgentEntity)
 
     @Delete
-    fun delete(agents: AgentEntity)
+    fun delete(agent: AgentEntity)
 }
