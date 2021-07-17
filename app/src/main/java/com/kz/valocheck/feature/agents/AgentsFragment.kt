@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -27,14 +28,15 @@ class AgentsFragment : Fragment(R.layout.agents_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = AgentsAdapter(AgentsOnClickListener {
-                agentId -> agentsViewModel.onAgentsClicked(agentId)
+        val adapter = AgentsAdapter(AgentsOnClickListener { agentId ->
+            agentsViewModel.onAgentsClicked(agentId)
         })
         binding.agentList.adapter = adapter
 
         agentsViewModel.navigateToAgentsData.observe(viewLifecycleOwner, {
             it?.let {
-                this.findNavController().navigate(AgentsFragmentDirections.actionAgentsFragmentToAgentsDetailFragment(it))
+                this.findNavController()
+                    .navigate(AgentsFragmentDirections.actionAgentsFragmentToAgentsDetailFragment(it))
                 agentsViewModel.onAgentsDataNavigated()
             }
         })
@@ -43,12 +45,12 @@ class AgentsFragment : Fragment(R.layout.agents_fragment) {
         binding.agentList.layoutManager = manager
 
         agentsViewModel.agentList.observe(viewLifecycleOwner, {
-            when(it){
+            when (it) {
                 is ViewState.Loading -> {
                     binding.agentList.isVisible = false
                     binding.loading.isVisible = true
                 }
-                is  ViewState.Success -> {
+                is ViewState.Success -> {
                     binding.loading.isVisible = false
                     binding.agentList.isVisible = true
                     adapter.submitList(it.data)
@@ -66,26 +68,21 @@ class AgentsFragment : Fragment(R.layout.agents_fragment) {
 
             val chipInflater = LayoutInflater.from(requireContext())
 
-//            binding.roleList.removeAllViews()
-            for (role in roles) {
+            roles.forEachIndexed { index, role ->
 
                 chipInflater.inflate(R.layout.role_chip, binding.roleList, false)
-                    .let { view ->
-                        view as Chip
-                    }
+                    .let { view -> view as Chip }
                     .apply {
                         text = role
-                        if (agentsViewModel.checkedRoleName == role) {
-                            isChecked = true
-                        }
                     }
                     .also {
                         binding.roleList.addView(it)
+                        if (role == agentsViewModel.checkedRoleName) {
+                            it.isChecked = true
+                        }
                     }
 
             }
-
-
         })
 
         binding.roleList.setOnCheckedChangeListener { group, checkedId ->
@@ -94,11 +91,9 @@ class AgentsFragment : Fragment(R.layout.agents_fragment) {
 
             val checkedRoleName = checkedChip?.text
 
-//          Toast.makeText(requireContext(), group.findViewById<Chip>(checkedId)?.text ?: "Unselect" , Toast.LENGTH_LONG).show()
-
             agentsViewModel.filter(checkedRoleName?.toString())
 
-            Log.i("AgentFragment", checkedRoleName.toString())
+            Log.i("AgentFragment", checkedRoleName.toString() + System.currentTimeMillis())
 
         }
     }
