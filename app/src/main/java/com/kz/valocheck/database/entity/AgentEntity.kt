@@ -32,11 +32,27 @@ data class AbilityEntity(
     val icon: String
 )
 
+data class RoleWithAgent(
+    @Embedded val role: RoleEntity,
+    @Relation(
+        parentColumn = "role_id",
+        entityColumn = "agent_role_id"
+    )
+    val agent: List<AgentEntity>,
+)
+
+
 data class AgentInfo(
     @Embedded val agent: AgentEntity,
-    @Relation( parentColumn = "agent_role_id", entityColumn = "role_id" )
+    @Relation(
+        parentColumn = "agent_role_id",
+        entityColumn = "role_id"
+    )
     val role: RoleEntity,
-    @Relation( parentColumn = "agent_id", entityColumn = "ability_agent_id" )
+    @Relation(
+        parentColumn = "agent_id",
+        entityColumn = "ability_agent_id"
+    )
     val ability: List<AbilityEntity>
 )
 

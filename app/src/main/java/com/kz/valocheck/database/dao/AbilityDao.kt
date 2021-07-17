@@ -7,6 +7,6 @@ import com.kz.valocheck.database.entity.AbilityEntity
 interface AbilityDao{
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg abilityEntity: AbilityEntity)
+    suspend fun insert(vararg abilityEntity: AbilityEntity)
 
 }

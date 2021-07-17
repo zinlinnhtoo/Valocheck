@@ -9,15 +9,15 @@ interface AgentDao {
 
     @Transaction
     @Query("SELECT * FROM agents")
-    fun getList(): List<AgentInfo>
+    suspend fun getList(): List<AgentInfo>
 
     @Transaction
     @Query("select * from agents where agent_id = :id")
     suspend fun get(id: String): AgentInfo
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg agent: AgentEntity)
+    suspend fun insert(vararg agent: AgentEntity)
 
     @Delete
-    fun delete(agent: AgentEntity)
+    suspend fun delete(agent: AgentEntity)
 }

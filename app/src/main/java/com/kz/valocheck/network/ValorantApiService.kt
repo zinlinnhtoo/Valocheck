@@ -12,20 +12,20 @@ interface ValorantApiService {
     @GET("agents")
     suspend fun getAgentList(): Response<AgentResponse>
 
-    @GET("agents/{uuid}")
-    suspend fun getAgentDetail(@Path("uuid") id : String): Response<AgentDetailResponse>
+//    @GET("agents/{uuid}")
+//    suspend fun getAgentDetail(@Path("uuid") id : String): Response<AgentDetailResponse>
 
     @GET("maps")
     suspend fun getMapList(): Response<MapResponse>
 
-    @GET("maps/{uuid}")
-    suspend fun getMapDetail(@Path("uuid") id: String) : Response<MapDetailResponse>
+//    @GET("maps/{uuid}")
+//    suspend fun getMapDetail(@Path("uuid") id: String) : Response<MapDetailResponse>
 
     @GET("weapons")
     suspend fun getWeaponList(): Response<WeaponResponse>
 
-    @GET("weapons/{uuid}")
-    suspend fun getWeaponDetail(@Path("uuid") id: String) : Response<WeaponDetailResponse>
+//    @GET("weapons/{uuid}")
+//    suspend fun getWeaponDetail(@Path("uuid") id: String) : Response<WeaponDetailResponse>
 
 }
 

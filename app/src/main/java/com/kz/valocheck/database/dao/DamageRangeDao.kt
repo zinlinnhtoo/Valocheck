@@ -9,6 +9,6 @@ import com.kz.valocheck.database.entity.DamageRangeEntity
 interface DamageRangeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg damageRangeEntity: DamageRangeEntity)
+    suspend fun insert(vararg damageRangeEntity: DamageRangeEntity)
 
 }

@@ -7,14 +7,14 @@ import com.kz.valocheck.database.entity.MapEntity
 interface MapDao {
 
     @Query("SELECT * FROM maps")
-    fun getList(): List<MapEntity>
+    suspend fun getList(): List<MapEntity>
 
     @Query("SELECT * FROM maps WHERE id = :id")
     suspend fun get(id: String): MapEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg map: MapEntity)
+    suspend fun insert(vararg map: MapEntity)
 
     @Delete
-    fun delete(map: MapEntity)
+    suspend fun delete(map: MapEntity)
 }
