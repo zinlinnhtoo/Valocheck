@@ -25,9 +25,18 @@ class AgentsRepo @Inject constructor(
 ) {
 
     //get agents
-    suspend fun getAgentsList(): List<AgentsDomain> {
+    suspend fun getAgentsList(forceRefresh: Boolean): List<AgentsDomain> {
+        if (forceRefresh) {
+            saveAgentsList()
+        }
+
+        return agentDao.getList().map { it.asDomain() }
+
+    }
 
 
+
+    private suspend fun saveAgentsList() {
         try {
             val result = valorantApiService.getAgentList()
                 .body()?.data?.filterNot { it.developerName?.contains("NPE") == true }
@@ -63,8 +72,6 @@ class AgentsRepo @Inject constructor(
         } catch (e: Exception) {
 
         }
-
-        return agentDao.getList().map { it.asDomain() }
     }
 
     //get agent detail
@@ -74,19 +81,19 @@ class AgentsRepo @Inject constructor(
 
 
     fun getRoleList(): LiveData<List<RoleDomain>> {
-        return roleDao.getRoleList().map { it.map { it.asDomain() } }
+        return roleDao.getRoleList().map { it.map { roleEntity ->  roleEntity.asDomain() } }
     }
 
     suspend fun getRoleWithAgent(roleName: String): List<AgentsDomain> {
         return roleDao.getRoleWithAgent(roleName).flatMap {
-            it.agent.map { agent ->
+            it.agent.map { agentEntity ->
                 AgentsDomain(
-                    id = agent.agentId,
-                    name = agent.name,
-                    profile = agent.profile,
-                    portrait = agent.portrait,
-                    description = agent.description,
-                    developerName = agent.developerName,
+                    id = agentEntity.agentId,
+                    name = agentEntity.name,
+                    profile = agentEntity.profile,
+                    portrait = agentEntity.portrait,
+                    description = agentEntity.description,
+                    developerName = agentEntity.developerName,
                     abilities = emptyList(),
                     role = it.role.asDomain()
                 )

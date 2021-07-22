@@ -1,7 +1,9 @@
 package com.kz.valocheck.mapper
 
 import com.kz.valocheck.database.entity.AbilityEntity
+import com.kz.valocheck.database.entity.AgentEntity
 import com.kz.valocheck.database.entity.AgentInfo
+import com.kz.valocheck.database.entity.RoleEntity
 import com.kz.valocheck.domain.AbilityDomain
 import com.kz.valocheck.domain.AgentsDomain
 import com.kz.valocheck.domain.RoleDomain

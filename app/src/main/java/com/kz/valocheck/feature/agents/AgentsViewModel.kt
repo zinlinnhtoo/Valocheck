@@ -16,12 +16,12 @@ class AgentsViewModel @Inject constructor(private val agentsRepo: AgentsRepo) : 
     val agentList : LiveData<ViewState<List<AgentsDomain>>>
     get() = _agentList
 
-    private fun getAgentsList() {
+    private fun getAgentsList(forceRefresh: Boolean) {
 
         viewModelScope.launch {
             try {
                 _agentList.value = ViewState.Loading
-                _agentList.value = ViewState.Success(agentsRepo.getAgentsList().filterNot { it.developerName.contains("NPE") })
+                _agentList.value = ViewState.Success(agentsRepo.getAgentsList(forceRefresh))
             } catch (e: Exception) {
                 _agentList.value = ViewState.Error(e)
             }
@@ -30,7 +30,7 @@ class AgentsViewModel @Inject constructor(private val agentsRepo: AgentsRepo) : 
     }
 
     init {
-        getAgentsList()
+        getAgentsList(true)
     }
 
     private val _navigateToAgentsData = MutableLiveData<String?>()
@@ -49,8 +49,8 @@ class AgentsViewModel @Inject constructor(private val agentsRepo: AgentsRepo) : 
 
 
     val roleList : LiveData<List<String>> = agentsRepo.getRoleList().distinctUntilChanged().map {
-        it.map {
-            it.name
+        it.map { roleDomain ->
+            roleDomain.name
         }
     }
 
@@ -71,7 +71,7 @@ class AgentsViewModel @Inject constructor(private val agentsRepo: AgentsRepo) : 
 
             try {
                 if(roleName == null) {
-                   _agentList.value  = ViewState.Success(agentsRepo.getAgentsList().filterNot { it.developerName.contains("NPE") })
+                    getAgentsList(false)
                 }else {
                     _agentList.value = ViewState.Success(agentsRepo.getRoleWithAgent(roleName))
                 }
