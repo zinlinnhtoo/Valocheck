@@ -5,13 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
-import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.chip.Chip
+import com.kz.valocheck.GridSpacingItemDecoration
 import com.kz.valocheck.R
 import com.kz.valocheck.databinding.AgentsFragmentBinding
 import com.kz.valocheck.util.ViewState
@@ -31,7 +31,12 @@ class AgentsFragment : Fragment(R.layout.agents_fragment) {
         val adapter = AgentsAdapter(AgentsOnClickListener { agentId ->
             agentsViewModel.onAgentsClicked(agentId)
         })
-        binding.agentList.adapter = adapter
+
+        binding.agentList.apply {
+            val spacingInPixels = 16
+            this.addItemDecoration(GridSpacingItemDecoration(2, spacingInPixels, true))
+            this.adapter = adapter
+        }
 
         agentsViewModel.navigateToAgentsData.observe(viewLifecycleOwner, {
             it?.let {

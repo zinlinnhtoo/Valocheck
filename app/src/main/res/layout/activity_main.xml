@@ -31,12 +31,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" >
 
-                        <com.airbnb.lottie.LottieAnimationView
-                            android:id="@+id/dark_light_animation"
-                            android:layout_width="60dp"
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/dark_mode_switch"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentEnd="true" />
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="8dp"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </RelativeLayout>
 

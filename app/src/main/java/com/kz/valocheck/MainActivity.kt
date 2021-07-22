@@ -37,6 +37,12 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
 
+        val switch = binding.darkModeSwitch
+        switch.isChecked = DarkModeHelper.getInstance(applicationContext).isDark()
+        switch.setOnClickListener{
+            DarkModeHelper.getInstance(applicationContext).toggleDark()
+        }
+
     }
 
 

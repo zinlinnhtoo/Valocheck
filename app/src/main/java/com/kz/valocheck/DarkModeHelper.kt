@@ -2,7 +2,6 @@ package com.kz.valocheck
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 

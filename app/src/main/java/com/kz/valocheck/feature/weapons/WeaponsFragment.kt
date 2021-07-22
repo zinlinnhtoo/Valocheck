@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.kz.valocheck.GridSpacingItemDecoration
 import com.kz.valocheck.R
 import com.kz.valocheck.databinding.WeaponsFragmentBinding
 import com.kz.valocheck.util.ViewState
@@ -30,7 +31,12 @@ class WeaponsFragment : Fragment(R.layout.weapons_fragment) {
         val adapter = WeaponsAdapter(WeaponsOnClickListener {
             weaponId -> weaponsViewModel.onWeaponsClicked(weaponId)
         })
-        binding.weaponList.adapter = adapter
+
+        binding.weaponList.apply {
+                val spacingInPixels = 16
+                this.addItemDecoration(GridSpacingItemDecoration(2, spacingInPixels, true))
+                this.adapter = adapter
+        }
 
         val manager = GridLayoutManager(activity, 2)
         binding.weaponList.layoutManager = manager
