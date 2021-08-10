@@ -14,6 +14,15 @@ class MapsRepo @Inject constructor(
 
     suspend fun getMapsList() : List<MapsDomain> {
 
+        saveMapsList()
+
+        return mapDao.getList().map {
+           it.asDomain()
+        }
+
+    }
+
+    private suspend fun saveMapsList() {
         try {
 
             val mapEntities = valorantApiService.getMapList().body()?.data?.map {
@@ -25,11 +34,6 @@ class MapsRepo @Inject constructor(
         } catch (e: Exception) {
 
         }
-
-        return mapDao.getList().map {
-           it.asDomain()
-        }
-
     }
 
     suspend fun getMapsDetail(id: String): MapsDomain {

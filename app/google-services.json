@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "847731098558",
+    "project_id": "valocheck",
+    "storage_bucket": "valocheck.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847731098558:android:1c5e42566dfc9b9d0eafef",
+        "android_client_info": {
+          "package_name": "com.kz.valocheck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847731098558-4e05npjc9vijp5p6ep760ss566kjq1eu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP2nmdKq5TCbSl2YYMjwNz14uWv7BI0UU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847731098558-4e05npjc9vijp5p6ep760ss566kjq1eu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

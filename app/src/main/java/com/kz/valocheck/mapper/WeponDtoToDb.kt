@@ -17,8 +17,8 @@ fun WeaponDto?.asEntity() : WeaponEntity {
                     fireRate = weaponStatsDto?.fireRate.orEmpty(),
                     magazineSize = weaponStatsDto?.magazineSize.orEmpty(),
                     runSpeedMultiplier = weaponStatsDto?.runSpeedMultiplier.orEmpty(),
-                    equipTimeSecond = weaponStatsDto?.equipTimeSecond.orEmpty(),
-                    reloadTimeSecond = weaponStatsDto?.reloadTimeSecond.orEmpty(),
+                    equipTimeSeconds = weaponStatsDto?.equipTimeSeconds.orEmpty(),
+                    reloadTimeSeconds = weaponStatsDto?.reloadTimeSeconds.orEmpty(),
                     wallPenetration = weaponStatsDto?.wallPenetration.orEmpty(),
                     fireMode = weaponStatsDto?.fireMode.orEmpty()
                 )

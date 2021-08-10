@@ -1,11 +1,7 @@
 package com.kz.valocheck
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -34,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigation.setupWithNavController(navController)
 
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.agentsFragment,R.id.mapsFragment,R.id.weaponsFragment))
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
 
         val switch = binding.darkModeSwitch
@@ -42,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         switch.setOnClickListener{
             DarkModeHelper.getInstance(applicationContext).toggleDark()
         }
+
+
 
     }
 

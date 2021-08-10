@@ -17,8 +17,8 @@ fun WeaponInfo.asDomain(): WeaponsDomain {
                 fireRate = weaponStatsEntity.fireRate,
                 magazineSize = weaponStatsEntity.magazineSize,
                 runSpeedMultiplier = weaponStatsEntity.runSpeedMultiplier,
-                equipTimeSecond = weaponStatsEntity.equipTimeSecond,
-                reloadTimeSecond = weaponStatsEntity.reloadTimeSecond,
+                equipTimeSeconds = weaponStatsEntity.equipTimeSeconds,
+                reloadTimeSeconds = weaponStatsEntity.reloadTimeSeconds,
                 wallPenetration = weaponStatsEntity.wallPenetration,
                 fireMode = weaponStatsEntity.fireMode
             )

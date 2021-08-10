@@ -18,7 +18,7 @@ class MapsViewModel @Inject constructor(private val mapsRepo: MapsRepo) : ViewMo
     val mapsList : LiveData<ViewState<List<MapsDomain>>>
         get() = _mapsList
 
-    fun getMapsList() {
+    private fun getMapsList() {
 
         viewModelScope.launch {
            try {

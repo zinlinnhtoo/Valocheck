@@ -16,15 +16,15 @@ data class WeaponStatsEntity(
     @ColumnInfo(name = "fire_rate") val fireRate: String,
     @ColumnInfo(name = "magazine_size") val magazineSize: String,
     @ColumnInfo(name = "run_speed_multiplier") val runSpeedMultiplier: String,
-    @ColumnInfo(name = "equip_time_second") val equipTimeSecond: String,
-    @ColumnInfo(name = "reload_time_second") val reloadTimeSecond: String,
+    @ColumnInfo(name = "equip_time_second") val equipTimeSeconds: String,
+    @ColumnInfo(name = "reload_time_second") val reloadTimeSeconds: String,
     @ColumnInfo(name = "wall_penetration")val wallPenetration: String,
     @ColumnInfo(name = "fire_mode") val fireMode: String
 )
 
 data class ShopDataEntity(
     val cost: String,
-    @ColumnInfo(name = "shop_data_category")val category: String,
+    @ColumnInfo(name = "shop_data_category") val category: String,
     @ColumnInfo(name = "category_text") val categoryText: String
 )
 

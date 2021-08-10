@@ -19,6 +19,13 @@ class WeaponsRepo @Inject constructor(
 
     suspend fun getWeaponsList(): List<WeaponsDomain> {
 
+        saveWeaponsList()
+        return weaponDao.getList().map {
+            it.asDomain()
+        }
+    }
+
+    private suspend fun saveWeaponsList() {
         try {
 
             val apiResult = valorantApiService.getWeaponList().body()?.data
@@ -42,10 +49,6 @@ class WeaponsRepo @Inject constructor(
 
         } catch (e: Exception) {
             Log.e("error", "error")
-        }
-
-        return weaponDao.getList().map {
-            it.asDomain()
         }
     }
 

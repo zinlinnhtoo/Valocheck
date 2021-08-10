@@ -25,8 +25,8 @@ data class WeaponStatsDto(
     val fireRate: String?,
     val magazineSize: String?,
     val runSpeedMultiplier: String?,
-    val equipTimeSecond: String?,
-    val reloadTimeSecond: String?,
+    val equipTimeSeconds: String?,
+    val reloadTimeSeconds: String?,
     val wallPenetration: String?,
     val fireMode: String?,
     @Json(name = "damageRanges") val dmgRange: List<DamageRangeDto>?

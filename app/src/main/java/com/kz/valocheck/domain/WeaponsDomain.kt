@@ -14,8 +14,8 @@ data class WeaponStatsDomain(
     val fireRate: String,
     val magazineSize: String,
     val runSpeedMultiplier: String,
-    val equipTimeSecond: String,
-    val reloadTimeSecond: String,
+    val equipTimeSeconds: String,
+    val reloadTimeSeconds: String,
     val wallPenetration: String,
     val fireMode: String
 )
