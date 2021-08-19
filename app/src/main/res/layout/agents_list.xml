@@ -8,16 +8,12 @@
         <variable
             name="agent"
             type="com.kz.valocheck.domain.AgentsDomain" />
-
-        <variable
-            name="clickListner"
-            type="com.kz.valocheck.feature.agents.AgentsOnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="@{ () -> clickListner.onClick(agent)}">
+        android:transitionName="@{@string/trans_list(agent.id)}">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
@@ -35,9 +31,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
                 <ImageView
                     android:id="@+id/agent_profile_image"
+                    android:transitionName="@{@string/trans_list_image(agent.id)}"
                     android:layout_width="@dimen/agent_icon_width"
                     android:layout_height="@dimen/agent_icon_height"
                     app:imageUrl="@{agent.profile}"
@@ -49,6 +45,7 @@
 
                 <TextView
                     android:id="@+id/agent_profile_name"
+                    android:transitionName="@{@string/trans_list_label(agent.id)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"

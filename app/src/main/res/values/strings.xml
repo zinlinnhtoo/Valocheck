@@ -41,4 +41,13 @@
     <string name="map_name">ASCENT</string>
     <string name="map_coordinate">"45°26'BF'N,12°20'Q'E"</string>
     <string name="change_theme">Change Theme</string>
+
+    <string name="trans_list">agent_%s</string>
+    <string name="trans_detail">agent_detail</string>
+
+    <string name="trans_list_label">agent_label_%s</string>
+    <string name="trans_label">agent_label</string>
+
+    <string name="trans_list_image">agent_image_%s</string>
+    <string name="trans_image">agent_image</string>
 </resources>

@@ -33,30 +33,11 @@ class AgentsViewModel @Inject constructor(private val agentsRepo: AgentsRepo) : 
         getAgentsList(true)
     }
 
-    private val _navigateToAgentsData = MutableLiveData<String?>()
-    val navigateToAgentsData : LiveData<String?>
-    get() = _navigateToAgentsData
-
-    fun onAgentsClicked(agentId : String) {
-        _navigateToAgentsData.value = agentId
-    }
-
-    fun onAgentsDataNavigated() {
-        _navigateToAgentsData.value = null
-    }
-
-
-
-
     val roleList : LiveData<List<String>> = agentsRepo.getRoleList().distinctUntilChanged().map {
         it.map { roleDomain ->
             roleDomain.name
         }
     }
-
-
-
-
 
     var checkedRoleName : String? = null
     fun filter(roleName: String?) {
@@ -81,9 +62,4 @@ class AgentsViewModel @Inject constructor(private val agentsRepo: AgentsRepo) : 
 
         }
     }
-
-
-
-
-    
 }
